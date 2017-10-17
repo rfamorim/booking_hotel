@@ -1,0 +1,35 @@
+- A arquitetura proposta levou em consideração que, no momento, não há cadastro (e nem login) de um eventual usuário.
+
+- Somente foi utilizado a biblioteca de build Rake e a de testes RSpec, além das bibliotecas presentes no pacote de bibliotecas padrão de Ruby.
+
+- O sistema proposto irá atender a uma rede de hotéis específica, não havendo a modelagem de uma rede de hotéis e, sim, a modelagem do hotel em si.
+
+- Cada hotel possui várias taxas. Uma taxa para um cliente especial (Rewards) e outra para um cliente normal (Regular).
+
+- As buscas foram modeladas de formas distintas e elas se dão de duas formas:
+	- Via um arquivo, onde cada linha representa uma busca a ser realizada. O arquivo deve ter sido escrito usando uma ferramenta open-source como um .txt ou .rtf. Qualquer extensão de um software proprietário será recusado.
+	- Criando uma busca isolada, tendo como input a busca em si.
+
+- Como foram criadas duas formas de buscas, não há relação direta de dependência entre BookingSearch e SearchFile, pois a busca pode ter vindo ou não de um arquivo. Logo, BookingSearch não é uma classe "filha" de SearchFile.
+
+- Cada entrada para busca terá o formato especificado: "Regular: 16Mar2009(mon), 17Mar2009(tues), 18Mar2009(wed)". Vale notar que a presença do dia da semana em parênteses é totalmente opcional, bem como o tipo do cliente estando com letras maiúsculas ou não.
+
+- Só dois tipos de cliente serão aceitos: "Rewards" ou "Regular". Qualquer outro tipo (inclusive "reward") será considerado inválido.
+
+- Todo o sistema foi desenvolvido usando Ruby 2.2.3, num Sistema Operacional Ubuntu 16.04.
+
+
+Para executar o sistema, existem duas formas de realizar as buscas:
+	- A partir de uma simples busca, execute:
+		- rake insert_search:from_a_single_search
+
+	- A partir de um arquivo, execute:
+		- rake insert_search:from_a_file
+
+E siga os comandos indicados.
+
+Para rodar os testes desenvolvidos basta executar:
+- rspec spec/booking_search_spec.rb
+- rspec spec/fee_spec.rb
+- rspec spec/hotel_spec.rb
+- rspec spec/search_file_spec.rb
